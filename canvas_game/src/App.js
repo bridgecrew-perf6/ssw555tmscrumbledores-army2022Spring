@@ -1,10 +1,17 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
+import Qa from "./components/Qa";
+import Instructions from "./components/Instructions";
 
 function App() {
   return (
     <div className="App">
-      <p>hello world</p>
+      <Header />
+      <div className="body">
+        <Instructions />
+        <Qa />
+      </div>
     </div>
   );
 }

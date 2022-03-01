@@ -2,7 +2,7 @@ import React from "react";
 import "./Qa.css";
 
 // creat a Qa component
-const Qa = (props) => {
+const DisplayImage = (props) => {
   return (
     <React.Fragment>
       <div className="qaOutLine">
@@ -58,4 +58,4 @@ const Qa = (props) => {
   );
 };
 
-export default Qa;
+export default DisplayImage;

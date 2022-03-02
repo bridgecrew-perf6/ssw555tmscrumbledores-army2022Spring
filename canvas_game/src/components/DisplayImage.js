@@ -37,26 +37,24 @@ const DisplayImage = (props) => {
   return (
     <React.Fragment>
       <div className="qaOutLine">
-        <h1>{props.Question}</h1>
+        <h1>{props.question}</h1>
         <div className="qaButtons">
           <div className="imageRow">
             <div className="optionValue">
-              <div>
-                <img
-                  className="image"
-                  src={Image1}
-                  alt="Image1"
-                  onClick={() => props.setImageSelected(1)}
-                />
-              </div>
-              <div className="optionValue">
-                <img
-                  className="image"
-                  src={Image2}
-                  alt="Image2"
-                  onClick={() => props.setImageSelected(2)}
-                />
-              </div>
+              <img
+                className="image"
+                src={Image1}
+                alt="Image1"
+                onClick={() => props.setImageSelected(1)}
+              />
+            </div>
+            <div className="optionValue">
+              <img
+                className="image"
+                src={Image2}
+                alt="Image2"
+                onClick={() => props.setImageSelected(2)}
+              />
             </div>
           </div>
           <div className="imageRow">

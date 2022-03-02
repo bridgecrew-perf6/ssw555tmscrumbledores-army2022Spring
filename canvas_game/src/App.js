@@ -19,6 +19,7 @@ function App() {
   const [option4, setOption4] = useState("Mountains");
 
   const [ImageType, setImageType] = useState(null);
+  const [musicType, setMusicType] = useState(null);
   const [ImageSelected, setImageSelected] = useState(null);
 
   return (
@@ -28,19 +29,38 @@ function App() {
         <Instructions />
         {ImageType === null ? (
           <Qa
-            Question={question}
+            question={question}
             option1={option1}
             option2={option2}
             option3={option3}
             option4={option4}
-            setImageType={setImageType}
+            setType={setImageType}
           />
-        ) : (
+        ) : null}
+        {ImageSelected === null && ImageType !== null ? (
           <DisplayImage
-            question={question}
+            question={"Choose an image to doodle on"}
             setImageSelected={setImageSelected}
             ImageType={ImageType}
           />
+        ) : null}
+        {ImageSelected !== null && musicType === null ? (
+          <Qa
+            question={"What kind of music do you want to listen to?"}
+            option1={"Claming"}
+            option2={"Instruments"}
+            option3={"Nature"}
+            option4={"Time alone"}
+            setType={setMusicType}
+          ></Qa>
+        ) : null}
+        {console.log(
+          "ImageType: ",
+          ImageType,
+          "ImageSelected: ",
+          ImageSelected,
+          "MusicType: ",
+          musicType
         )}
       </div>
     </div>

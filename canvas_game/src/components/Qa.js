@@ -6,7 +6,7 @@ const Qa = (props) => {
   return (
     <React.Fragment>
       <div className="qaOutLine">
-        <h1>{props.Question}</h1>
+        <h1>{props.question}</h1>
         <div className="qaButtons">
           <div className="optionValue">
             <input
@@ -15,7 +15,7 @@ const Qa = (props) => {
               id="opt1"
               name="ImageType"
               value="1"
-              onClick={() => props.setImageType(1)}
+              onClick={() => props.setType(1)}
             />
             <label for="opt1">{props.option1}</label>
           </div>
@@ -26,7 +26,7 @@ const Qa = (props) => {
               id="opt2"
               name="ImageType"
               value="2"
-              onClick={() => props.setImageType(2)}
+              onClick={() => props.setType(2)}
             />
             <label for="opt2">{props.option2}</label>
           </div>
@@ -37,7 +37,7 @@ const Qa = (props) => {
               id="opt3"
               name="ImageType"
               value="3"
-              onClick={() => props.setImageType(3)}
+              onClick={() => props.setType(3)}
             />
             <label for="opt3">{props.option3}</label>
           </div>
@@ -48,7 +48,7 @@ const Qa = (props) => {
               id="opt4"
               name="ImageType"
               value="4"
-              onClick={() => props.setImageType(4)}
+              onClick={() => props.setType(4)}
             />
             <label for="opt4">{props.option4}</label>
           </div>

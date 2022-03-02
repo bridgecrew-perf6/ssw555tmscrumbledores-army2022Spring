@@ -1,0 +1,10 @@
+.image {
+  width: 400px;
+  height: 200px;
+}
+.imageRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

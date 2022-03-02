@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <React.Fragment>
-      <h1 className="header">Scribble your emotions</h1>
+      <h1 className="header">Scribble Your Emotions</h1>
     </React.Fragment>
   );
 };

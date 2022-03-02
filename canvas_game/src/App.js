@@ -2,22 +2,11 @@ import "./App.css";
 import Header from "./components/Header";
 import Qa from "./components/Qa";
 import Instructions from "./components/Instructions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DisplayImage from "./components/DisplayImage";
-import image1 from "./static_data/Images/beaches/1.jpeg";
-import image2 from "./static_data/Images/beaches/2.jpeg";
-import image3 from "./static_data/Images/beaches/3.jpeg";
-import image4 from "./static_data/Images/beaches/4.jpeg";
+import Audio from "./components/Audio";
 
 function App() {
-  const [question, setQuestion] = useState(
-    "What kind of scenario are you looking to scribble on?"
-  );
-  const [option1, setOption1] = useState("Beaches");
-  const [option2, setOption2] = useState("Forests");
-  const [option3, setOption3] = useState("Lakes");
-  const [option4, setOption4] = useState("Mountains");
-
   const [ImageType, setImageType] = useState(null);
   const [musicType, setMusicType] = useState(null);
   const [ImageSelected, setImageSelected] = useState(null);
@@ -29,11 +18,11 @@ function App() {
         <Instructions />
         {ImageType === null ? (
           <Qa
-            question={question}
-            option1={option1}
-            option2={option2}
-            option3={option3}
-            option4={option4}
+            question={"What kind of scenario are you looking to scribble on?"}
+            option1={"Beaches"}
+            option2={"Forests"}
+            option3={"Lakes"}
+            option4={"Mountains"}
             setType={setImageType}
           />
         ) : null}
@@ -54,14 +43,7 @@ function App() {
             setType={setMusicType}
           ></Qa>
         ) : null}
-        {console.log(
-          "ImageType: ",
-          ImageType,
-          "ImageSelected: ",
-          ImageSelected,
-          "MusicType: ",
-          musicType
-        )}
+        {musicType !== null ? <Audio musicType={musicType} /> : null}
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const Qa = (props) => {
         <div className="qaButtons">
           <div className="optionValue">
             <input
-              style={{ marginTop: "10px", marginRight: "10px" }}
+              style={{ marginTop: "4px", marginRight: "10px" }}
               type="radio"
               id="opt1"
               name="ImageType"
@@ -21,7 +21,7 @@ const Qa = (props) => {
           </div>
           <div className="optionValue">
             <input
-              style={{ marginTop: "10px", marginRight: "10px" }}
+              style={{ marginTop: "4px", marginRight: "10px" }}
               type="radio"
               id="opt2"
               name="ImageType"
@@ -32,7 +32,7 @@ const Qa = (props) => {
           </div>
           <div className="optionValue">
             <input
-              style={{ marginTop: "10px", marginRight: "10px" }}
+              style={{ marginTop: "4px", marginRight: "10px" }}
               type="radio"
               id="opt3"
               name="ImageType"
@@ -43,7 +43,7 @@ const Qa = (props) => {
           </div>
           <div className="optionValue">
             <input
-              style={{ marginTop: "10px", marginRight: "10px" }}
+              style={{ marginTop: "4px", marginRight: "10px" }}
               type="radio"
               id="opt4"
               name="ImageType"

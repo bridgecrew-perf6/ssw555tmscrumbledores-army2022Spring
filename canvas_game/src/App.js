@@ -18,6 +18,7 @@ function App() {
         <Instructions />
         {ImageType === null ? (
           <Qa
+            questionType={"image"}
             question={"What kind of scenario are you looking to scribble on?"}
             option1={"Beaches"}
             option2={"Forests"}
@@ -31,19 +32,24 @@ function App() {
             question={"Choose an image to doodle on"}
             setImageSelected={setImageSelected}
             ImageType={ImageType}
+            setImageType={setImageType}
           />
         ) : null}
         {ImageSelected !== null && musicType === null ? (
           <Qa
+            questionType={"music"}
             question={"What kind of music do you want to listen to?"}
-            option1={"Claming"}
+            option1={"Calming"}
             option2={"Instruments"}
             option3={"Nature"}
             option4={"Time alone"}
+            setImageSelected={setImageSelected}
             setType={setMusicType}
           ></Qa>
         ) : null}
-        {musicType !== null ? <Audio musicType={musicType} /> : null}
+        {musicType !== null ? (
+          <Audio setType={setMusicType} musicType={musicType} />
+        ) : null}
       </div>
     </div>
   );

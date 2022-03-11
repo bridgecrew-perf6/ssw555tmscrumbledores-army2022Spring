@@ -8,7 +8,14 @@ const DisplayImage = (props) => {
   let Image2 = null;
   let Image3 = null;
   let Image4 = null;
-  console.log("ImageType: ", props.ImageType);
+
+  const [optionSelected, setOptionSelected] = React.useState(0);
+
+  function setOption(optionSelected) {
+    if (optionSelected !== 0) {
+      props.setImageSelected(optionSelected);
+    }
+  }
 
   if (props.ImageType === 1) {
     Image1 = require("../static_data/Images/beaches/1.jpeg");
@@ -45,7 +52,7 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image1}
                 alt="Image1"
-                onClick={() => props.setImageSelected(1)}
+                onClick={() => setOptionSelected(1)}
               />
             </div>
             <div className="optionValue">
@@ -53,7 +60,7 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image2}
                 alt="Image2"
-                onClick={() => props.setImageSelected(2)}
+                onClick={() => setOptionSelected(2)}
               />
             </div>
           </div>
@@ -63,7 +70,7 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image3}
                 alt="Image3"
-                onClick={() => props.setImageSelected(3)}
+                onClick={() => setOptionSelected(3)}
               />
             </div>
             <div className="optionValue">
@@ -71,10 +78,26 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image4}
                 alt="Image4"
-                onClick={() => props.setImageSelected(4)}
+                onClick={() => setOptionSelected(4)}
               />
             </div>
           </div>
+        </div>
+        <div className="buttonRow">
+          <button
+            onClick={() => props.setImageType(null)}
+            className="chooseImageTypeAgain"
+          >
+            Back
+          </button>
+          <button
+            className="NextButton"
+            disabled={optionSelected === 0}
+            style={{ marginTop: "30px" }}
+            onClick={() => setOption(optionSelected)}
+          >
+            Next
+          </button>
         </div>
       </div>
     </React.Fragment>

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Audio.css";
 
 const Audio = (props) => {
   let audio1 = null;
@@ -33,6 +34,12 @@ const Audio = (props) => {
             </audio>
           </div>
         </div>
+        <button
+          onClick={() => props.setType(null)}
+          className="chooseImageAgain"
+        >
+          Back
+        </button>
       </div>
     </React.Fragment>
   );

@@ -5,7 +5,7 @@ import Instructions from "./components/Instructions";
 import { useState } from "react";
 import DisplayImage from "./components/DisplayImage";
 import Audio from "./components/Audio";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 
 function App() {
   const [ImageType, setImageType] = useState(null);
@@ -52,7 +52,7 @@ function App() {
           <Audio setType={setMusicType} question={"Choose music that you would like to listen"} musicType={musicType} />
         ) : null}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

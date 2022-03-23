@@ -49,7 +49,7 @@ function App() {
           ></Qa>
         ) : null}
         {musicType !== null ? (
-          <Audio setType={setMusicType} musicType={musicType} />
+          <Audio setType={setMusicType} question={"Choose music that you would like to listen"} musicType={musicType} />
         ) : null}
       </div>
       <Footer/>

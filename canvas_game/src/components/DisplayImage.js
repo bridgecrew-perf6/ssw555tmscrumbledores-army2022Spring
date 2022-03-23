@@ -17,13 +17,26 @@ const DisplayImage = (props) => {
     }
   }
 
+  function mark(ID) {
+    //creates border
+    var childImages = document.getElementsByTagName("img");
+    var i;
+    console.log(childImages);
+
+    // clear any other borders that might be set
+    for (i = 0; i < childImages.length; i++) {
+      childImages[i].style.border = "";
+    }
+
+    // Then set the one that got clicked.
+    document.getElementById(ID).style.border = "3px solid black";
+  }
+
   if (props.ImageType === 1) {
     Image1 = require("../static_data/Images/beaches/1.jpeg");
     Image2 = require("../static_data/Images/beaches/2.jpeg");
     Image3 = require("../static_data/Images/beaches/3.jpeg");
     Image4 = require("../static_data/Images/beaches/4.jpeg");
-    console.log(Image1);
-    console.log(Image1);
   } else if (props.ImageType === 2) {
     Image1 = require("../static_data/Images/forests/1.jpeg");
     Image2 = require("../static_data/Images/forests/2.jpeg");
@@ -52,7 +65,11 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image1}
                 alt="Image1"
-                onClick={() => setOptionSelected(1)}
+                id="opt1"
+                onClick={() => {
+                  setOptionSelected(1);
+                  mark("opt1");
+                }}
               />
             </div>
             <div className="optionValue">
@@ -60,7 +77,11 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image2}
                 alt="Image2"
-                onClick={() => setOptionSelected(2)}
+                id="opt2"
+                onClick={() => {
+                  setOptionSelected(2);
+                  mark("opt2");
+                }}
               />
             </div>
           </div>
@@ -70,7 +91,11 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image3}
                 alt="Image3"
-                onClick={() => setOptionSelected(3)}
+                id="opt3"
+                onClick={() => {
+                  setOptionSelected(3);
+                  mark("opt3");
+                }}
               />
             </div>
             <div className="optionValue">
@@ -78,7 +103,11 @@ const DisplayImage = (props) => {
                 className="image"
                 src={Image4}
                 alt="Image4"
-                onClick={() => setOptionSelected(4)}
+                id="opt4"
+                onClick={() => {
+                  setOptionSelected(4);
+                  mark("opt4");
+                }}
               />
             </div>
           </div>

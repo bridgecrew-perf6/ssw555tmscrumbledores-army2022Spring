@@ -101,6 +101,7 @@ input[type="radio"]:focus {
   width: 150px;
   height: 40px;
   background-color: #17ac66;
+  color: blanchedalmond;
   border-radius: 8px;
   font-size: 20px;
   border: 0px;
@@ -132,6 +133,7 @@ input[type="radio"]:focus {
   height: 40px;
   border-radius: 8px;
   background-color: #17ac66;
+  color: blanchedalmond;
   font-size: 20px;
   border: 0px;
   font-weight: 500;
@@ -147,6 +149,7 @@ input[type="radio"]:focus {
   height: 40px;
   border-radius: 8px;
   background-color: #17ac66;
+  color: blanchedalmond;
   font-size: 20px;
   border: 0px;
   font-weight: 500;

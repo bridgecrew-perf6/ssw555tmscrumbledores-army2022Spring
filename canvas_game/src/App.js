@@ -6,11 +6,13 @@ import { useState } from "react";
 import DisplayImage from "./components/DisplayImage";
 import Audio from "./components/Audio";
 import Footer from "./components/Footer";
+import MusicEnable from "./components/MusicEnable";
 
 function App() {
   const [ImageType, setImageType] = useState(null);
-  const [musicType, setMusicType] = useState(null);
   const [ImageSelected, setImageSelected] = useState(null);
+  const [musicEnable, setMusicEnable] = useState(null);
+  const [musicType, setMusicType] = useState(null);
 
   return (
     <div className="App">
@@ -36,7 +38,21 @@ function App() {
             setImageType={setImageType}
           />
         ) : null}
-        {ImageSelected !== null && musicType === null ? (
+        {ImageSelected !== null &&
+        musicType === null &&
+        musicEnable === null ? (
+          <MusicEnable
+            questionType={"enableMusic"}
+            question={"Would you like to listen to music while scribbling?"}
+            option1={"Yes"}
+            option2={"No"}
+            setMusicEnable={setMusicEnable}
+            setImageSelected={setImageSelected}
+          ></MusicEnable>
+        ) : null}
+        {ImageSelected !== null &&
+        musicType === null &&
+        musicEnable === true ? (
           <Qa
             questionType={"music"}
             question={"What kind of music do you want to listen to?"}
@@ -44,12 +60,16 @@ function App() {
             option2={"Instruments"}
             option3={"Nature"}
             option4={"Time alone"}
-            setImageSelected={setImageSelected}
+            setImageSelected={setMusicEnable}
             setType={setMusicType}
           ></Qa>
         ) : null}
-        {musicType !== null ? (
-          <Audio setType={setMusicType} question={"Choose music that you would like to listen"} musicType={musicType} />
+        {musicType !== null && musicEnable === true ? (
+          <Audio
+            setType={setMusicType}
+            question={"Choose music that you would like to listen"}
+            musicType={musicType}
+          />
         ) : null}
       </div>
       <Footer />

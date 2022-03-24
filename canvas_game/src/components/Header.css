@@ -3,4 +3,6 @@
   margin-top: 0%;
   margin-bottom: 0%;
   background-image: url(/src/static_data/Background/header-bkgd.jpg);
+  -webkit-text-stroke: 2px black;
+  color: turquoise;
 }

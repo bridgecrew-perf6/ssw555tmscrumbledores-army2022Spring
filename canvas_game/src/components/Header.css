@@ -1,6 +1,10 @@
 .header {
-  padding: 40px;
+  padding: 15px;
   margin-top: 0%;
   margin-bottom: 0%;
-  background-image: url(/src/static_data/Background/header-bkgd.jpg);
+  -webkit-text-stroke: 2px black;
+  color: turquoise;
+  background-color:aquamarine;
+  border-bottom: 1px solid blanchedalmond;
+  font-style: oblique;
 }

@@ -13,6 +13,7 @@ function App() {
   const [ImageSelected, setImageSelected] = useState(null);
   const [musicEnable, setMusicEnable] = useState(null);
   const [musicType, setMusicType] = useState(null);
+  const [musicSelected, setMusicSelected] = useState(null);
 
   return (
     <div className="App">

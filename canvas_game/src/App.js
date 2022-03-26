@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Qa from "./components/Qa";
 import Instructions from "./components/Instructions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DisplayImage from "./components/DisplayImage";
 import Audio from "./components/Audio";
 import Footer from "./components/Footer";
@@ -10,10 +10,18 @@ import MusicEnable from "./components/MusicEnable";
 
 function App() {
   const [ImageType, setImageType] = useState(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
   const [ImageSelected, setImageSelected] = useState(null);
   const [musicEnable, setMusicEnable] = useState(null);
   const [musicType, setMusicType] = useState(null);
   const [musicSelected, setMusicSelected] = useState(null);
+
+  useEffect(() => {
+    if (uploadedImage) {
+      setImageType(5);
+      setImageSelected(uploadedImage);
+    }
+  }, [uploadedImage]);
 
   return (
     <div className="App">
@@ -31,9 +39,12 @@ function App() {
             option3={"Lakes"}
             option4={"Mountains"}
             setType={setImageType}
+            setUploadedImage={setUploadedImage}
           />
         ) : null}
-        {ImageSelected === null && ImageType !== null ? (
+        {ImageSelected === null &&
+        ImageType !== null &&
+        uploadedImage === null ? (
           <DisplayImage
             question={"Choose an image to doodle on"}
             setImageSelected={setImageSelected}
@@ -83,6 +94,11 @@ function App() {
             {/* align h1 to center */}
             <h1 style={{ textAlign: "center" }}>
               Here we will build canvas to draw in sprint 3.
+              {/* <img
+                alt="not fount"
+                width={"250px"}
+                src={URL.createObjectURL(uploadedImage)}
+              /> */}
             </h1>
           </div>
         ) : null}

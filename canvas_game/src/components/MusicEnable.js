@@ -40,21 +40,12 @@ const MusicEnable = (props) => {
           </div>
         </div>
         <div className="buttonRow">
-          {props.questionType === "image" ? (
-            <input
-              className="UploadImage"
-              accept="image/*"
-              id="contained-button-file"
-              type="file"
-            />
-          ) : (
-            <button
-              onClick={() => props.setImageSelected(null)}
-              className="chooseImageAgain"
-            >
-              Back
-            </button>
-          )}
+          <button
+            onClick={() => props.setImageSelected(null)}
+            className="chooseImageAgain"
+          >
+            Back
+          </button>
           <button
             className="NextButton"
             disabled={optionSelected === 0}

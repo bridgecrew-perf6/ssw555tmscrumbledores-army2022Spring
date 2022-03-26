@@ -57,7 +57,7 @@ const DisplayImage = (props) => {
   return (
     <React.Fragment>
       <div className="qaOutLine">
-        <h1>{props.question}</h1>
+        <h1 id="Question2">{props.question}</h1>
         <div className="qaButtons">
           <div className="imageRow">
             <div className="optionValue">

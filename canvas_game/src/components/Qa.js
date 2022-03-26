@@ -14,7 +14,7 @@ const Qa = (props) => {
   return (
     <React.Fragment>
       <div className="qaOutLine">
-        <h1>{props.question}</h1>
+        <h1 id="question">{props.question}</h1>
         <div className="qaButtons">
           <div className="optionValue">
             <input
@@ -66,8 +66,12 @@ const Qa = (props) => {
             <input
               className="UploadImage"
               accept="image/*"
-              id="contained-button-file"
+              id="uploadedImage"
               type="file"
+              onChange={(e) => {
+                props.setUploadedImage(e.target.files[0]);
+                setOption(5);
+              }}
             />
           ) : (
             <button

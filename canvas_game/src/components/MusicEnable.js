@@ -14,7 +14,7 @@ const MusicEnable = (props) => {
   return (
     <React.Fragment>
       <div className="qaOutLine">
-        <h1>{props.question}</h1>
+        <h1 id="Question3">{props.question}</h1>
         <div className="qaButtons">
           <div className="optionValue">
             <input
@@ -40,21 +40,12 @@ const MusicEnable = (props) => {
           </div>
         </div>
         <div className="buttonRow">
-          {props.questionType === "image" ? (
-            <input
-              className="UploadImage"
-              accept="image/*"
-              id="contained-button-file"
-              type="file"
-            />
-          ) : (
-            <button
-              onClick={() => props.setImageSelected(null)}
-              className="chooseImageAgain"
-            >
-              Back
-            </button>
-          )}
+          <button
+            onClick={() => props.setImageSelected(null)}
+            className="chooseImageAgain"
+          >
+            Back
+          </button>
           <button
             className="NextButton"
             disabled={optionSelected === 0}

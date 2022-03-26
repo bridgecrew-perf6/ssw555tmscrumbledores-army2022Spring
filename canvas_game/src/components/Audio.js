@@ -30,6 +30,7 @@ const Audio = (props) => {
         <div className="qaButtons">
           <div className="optionValue">
             <input
+              className="musicOption"
               type="radio"
               name="music"
               onClick={() => setOptionSelected(1)}
@@ -40,6 +41,7 @@ const Audio = (props) => {
           </div>
           <div className="optionValue">
             <input
+              className="musicOption"
               type="radio"
               name="music"
               onClick={() => setOptionSelected(2)}
@@ -49,21 +51,23 @@ const Audio = (props) => {
             </audio>
           </div>
         </div>
-        <button
-          onClick={() => {
-            props.setType(null);
-            props.setMusicSelected(null);
-          }}
-          className="chooseImageAgain"
-        >
-          Back
-        </button>
-        <button
-          onClick={() => setOption(optionSelected)}
-          className="chooseImageAgain"
-        >
-          Next
-        </button>
+        <div className="buttonRow">
+          <button
+            onClick={() => {
+              props.setType(null);
+              props.setMusicSelected(null);
+            }}
+            className="chooseImageAgain"
+          >
+            Back
+          </button>
+          <button
+            onClick={() => setOption(optionSelected)}
+            className="NextButton"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </React.Fragment>
   );

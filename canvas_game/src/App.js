@@ -19,7 +19,9 @@ function App() {
     <div className="App">
       <Header />
       <div className="body">
-        <Instructions />
+        {musicSelected === null && musicEnable !== false ? (
+          <Instructions />
+        ) : null}
         {ImageType === null ? (
           <Qa
             questionType={"image"}
@@ -65,13 +67,32 @@ function App() {
             setType={setMusicType}
           ></Qa>
         ) : null}
-        {musicType !== null && musicEnable === true ? (
+        {musicType !== null &&
+        musicEnable === true &&
+        musicSelected === null ? (
           <Audio
             setType={setMusicType}
             question={"Choose music that you would like to listen"}
             musicType={musicType}
+            setMusicSelected={setMusicSelected}
           />
         ) : null}
+        {(musicSelected !== null && musicEnable === true) ||
+        musicEnable === false ? (
+          <div>
+            {/* align h1 to center */}
+            <h1 style={{ textAlign: "center" }}>
+              Here we will build canvas to draw in sprint 3.
+            </h1>
+          </div>
+        ) : null}
+        {console.log(
+          ImageType,
+          ImageSelected,
+          musicEnable,
+          musicType,
+          musicSelected
+        )}
       </div>
       <Footer />
     </div>

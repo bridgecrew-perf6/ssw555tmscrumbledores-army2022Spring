@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ssw555tmscrumbledores-army2022Spring/static/css/main.4e31ce36.css",
-    "main.js": "/ssw555tmscrumbledores-army2022Spring/static/js/main.5980c915.js",
+    "main.js": "/ssw555tmscrumbledores-army2022Spring/static/js/main.5c20fcf3.js",
     "static/js/787.e1ce8304.chunk.js": "/ssw555tmscrumbledores-army2022Spring/static/js/787.e1ce8304.chunk.js",
     "static/media/2.mp3": "/ssw555tmscrumbledores-army2022Spring/static/media/2.ba787fde5e87944eb67b.mp3",
     "static/media/1.mp3": "/ssw555tmscrumbledores-army2022Spring/static/media/1.d2d55886ac2c78f8f7db.mp3",
@@ -12,11 +12,11 @@
     "static/media/4.jpeg": "/ssw555tmscrumbledores-army2022Spring/static/media/4.65e2b52d494f028948bd.jpeg",
     "index.html": "/ssw555tmscrumbledores-army2022Spring/index.html",
     "main.4e31ce36.css.map": "/ssw555tmscrumbledores-army2022Spring/static/css/main.4e31ce36.css.map",
-    "main.5980c915.js.map": "/ssw555tmscrumbledores-army2022Spring/static/js/main.5980c915.js.map",
+    "main.5c20fcf3.js.map": "/ssw555tmscrumbledores-army2022Spring/static/js/main.5c20fcf3.js.map",
     "787.e1ce8304.chunk.js.map": "/ssw555tmscrumbledores-army2022Spring/static/js/787.e1ce8304.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e31ce36.css",
-    "static/js/main.5980c915.js"
+    "static/js/main.5c20fcf3.js"
   ]
 }

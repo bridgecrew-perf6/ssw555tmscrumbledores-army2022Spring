@@ -2,6 +2,7 @@ import React from "react";
 import "./Audio.css";
 
 const Audio = (props) => {
+  const [optionSelected, setOptionSelected] = React.useState(0);
   let audio1 = null;
   let audio2 = null;
   if (props.musicType === 1) {
@@ -18,27 +19,50 @@ const Audio = (props) => {
     audio2 = require("../static_data/music/TimeAlone/2.mp3");
   }
 
+  let setOption = (optionSelected) => {
+    props.setMusicSelected(optionSelected);
+  };
+
   return (
     <React.Fragment>
       <div className="qaOutLine">
         <h1>{props.question}</h1>
         <div className="qaButtons">
           <div className="optionValue">
+            <input
+              type="radio"
+              name="music"
+              onClick={() => setOptionSelected(1)}
+            />
             <audio controls>
               <source src={audio1} type="audio/mpeg" />
             </audio>
           </div>
           <div className="optionValue">
+            <input
+              type="radio"
+              name="music"
+              onClick={() => setOptionSelected(2)}
+            />
             <audio controls>
               <source src={audio2} type="audio/mpeg" />
             </audio>
           </div>
         </div>
         <button
-          onClick={() => props.setType(null)}
+          onClick={() => {
+            props.setType(null);
+            props.setMusicSelected(null);
+          }}
           className="chooseImageAgain"
         >
           Back
+        </button>
+        <button
+          onClick={() => setOption(optionSelected)}
+          className="chooseImageAgain"
+        >
+          Next
         </button>
       </div>
     </React.Fragment>

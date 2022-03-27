@@ -1,3 +1,7 @@
 # scrumbledores-army
 
-This is a project by the agile team scrumbledores-army to create a game for mental health that enables employees in high-stress working environments to draw or scribble away to images that they can choose from the game repository or upload themselves in order feel relaxed and reduce their stress levels, while listening to calming music.
+The site is deployed at https://scribblegame.netlify.app
+
+Any changes in main will automatically trigger deployment and it will be triggered in the website
+
+For deploy logs visit : https://app.netlify.com/sites/scribblegame/deploys

@@ -90,7 +90,7 @@ function App() {
         ) : null}
         {(musicSelected !== null && musicEnable === true) ||
         musicEnable === false ? (
-          <div>
+          <div className = "canvas">
             {/* align h1 to center */}
             <h1 style={{ textAlign: "center" }}>
               Here we will build canvas to draw in sprint 3.

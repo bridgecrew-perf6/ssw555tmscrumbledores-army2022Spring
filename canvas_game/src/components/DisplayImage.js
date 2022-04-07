@@ -30,6 +30,7 @@ const DisplayImage = (props) => {
 
     // Then set the one that got clicked.
     document.getElementById(ID).style.border = "3px solid black";
+    props.setImageData(document.getElementById(ID).src);
   }
 
   if (props.ImageType === 1) {

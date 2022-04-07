@@ -7,11 +7,13 @@ import DisplayImage from "./components/DisplayImage";
 import Audio from "./components/Audio";
 import Footer from "./components/Footer";
 import MusicEnable from "./components/MusicEnable";
+import Canvas from "./Canvas.tsx";
 
 function App() {
   const [ImageType, setImageType] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [ImageSelected, setImageSelected] = useState(null);
+  const [imageData, setImageData] = useState(null);
   const [musicEnable, setMusicEnable] = useState(null);
   const [musicType, setMusicType] = useState(null);
   const [musicSelected, setMusicSelected] = useState(null);
@@ -33,7 +35,7 @@ function App() {
         {ImageType === null ? (
           <Qa
             questionType={"image"}
-            question={"what kind of scenario are you looking to scribble on ?"}
+            question={"what kind of scenario are you looking to scribble on"}
             option1={"Beaches"}
             option2={"Forests"}
             option3={"Lakes"}
@@ -50,6 +52,7 @@ function App() {
             setImageSelected={setImageSelected}
             ImageType={ImageType}
             setImageType={setImageType}
+            setImageData={setImageData}
           />
         ) : null}
         {ImageSelected !== null &&
@@ -90,16 +93,12 @@ function App() {
         ) : null}
         {(musicSelected !== null && musicEnable === true) ||
         musicEnable === false ? (
-          <div className = "canvas">
-            {/* align h1 to center */}
-            <h1 style={{ textAlign: "center" }}>
-              Here we will build canvas to draw in sprint 3.
-              {/* <img
-                alt="not fount"
-                width={"250px"}
-                src={URL.createObjectURL(uploadedImage)}
-              /> */}
-            </h1>
+          <div className="canvas">
+            <Canvas
+              ImageURL={
+                uploadedImage ? URL.createObjectURL(uploadedImage) : imageData
+              }
+            ></Canvas>
           </div>
         ) : null}
         {console.log(
@@ -107,13 +106,13 @@ function App() {
           ImageSelected,
           musicEnable,
           musicType,
-          musicSelected
+          musicSelected,
+          imageData
         )}
       </div>
       <Footer />
     </div>
   );
 }
-
 
 export default App;

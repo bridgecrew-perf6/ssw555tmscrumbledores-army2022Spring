@@ -213,7 +213,7 @@ function Canvas(props: any) {
       <div className="row">
         <aside className="col-3 border-right">
           <header className="my-3">
-            <h3>Properties</h3>
+            <h3 id = "Propertiesid1">Properties</h3>
           </header>
           <form className="formCol">
             {inputProps.map(
@@ -231,7 +231,7 @@ function Canvas(props: any) {
             )}
             <div className="p-2 col-10 d-flex ">
               <div>
-                <label htmlFor="strokeColorInput" className="form-label">
+                <label id= "strokeColorInputid"  htmlFor="strokeColorInput" className="form-label">
                   strokeColor
                 </label>
                 <input
@@ -252,7 +252,7 @@ function Canvas(props: any) {
                 ></input>
               </div>
               <div hidden className="mx-4">
-                <label htmlFor="canvasColorInput" className="form-label">
+                <label id="canvasColorInputid" htmlFor="canvasColorInput" className="form-label">
                   canvasColor
                 </label>
                 <input
@@ -291,7 +291,7 @@ function Canvas(props: any) {
                     );
                   }}
                 />
-                <label
+                <label id ="switchExportWithBackgroundImagid"
                   className="form-check-label"
                   htmlFor="switchExportWithBackgroundImage"
                 >
@@ -316,7 +316,7 @@ function Canvas(props: any) {
                     );
                   }}
                 />
-                <label
+                <label id = "switchWithTimestampid"
                   className="form-check-label"
                   htmlFor="switchWithTimestamp"
                 >
@@ -325,7 +325,7 @@ function Canvas(props: any) {
               </div>
             </div>
             <div className="p-2" hidden>
-              <label className="form-check-label" htmlFor="exportImageType">
+              <label id = "exportImageTypeid" className="form-check-label" htmlFor="exportImageType">
                 exportImageType
               </label>
               <div id="exportImageType" className="pt-2">

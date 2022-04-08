@@ -212,8 +212,8 @@ function Canvas(props: any) {
     <main className="container-fluid">
       <div className="row">
         <aside className="col-3 border-right">
-          <header className="my-5">
-            <h3>Props</h3>
+          <header className="my-3">
+            <h3>Properties</h3>
           </header>
           <form className="formCol">
             {inputProps.map(
@@ -251,7 +251,7 @@ function Canvas(props: any) {
                   }}
                 ></input>
               </div>
-              <div className="mx-4">
+              <div hidden className="mx-4">
                 <label htmlFor="canvasColorInput" className="form-label">
                   canvasColor
                 </label>
@@ -522,7 +522,7 @@ function Canvas(props: any) {
           </form>
         </aside>
         <section className="col-9">
-          <header className="my-5">
+          <header className="my-3">
             <h3>Canvas</h3>
           </header>
           <section className="row no-gutters canvas-area m-0 p-0">

@@ -104,3 +104,20 @@
   flex-direction: column;
   justify-content: start;
 }
+
+.PlayBtn {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #61dafb;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.btnplace {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-right: 30px;
+}

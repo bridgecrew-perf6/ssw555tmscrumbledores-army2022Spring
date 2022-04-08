@@ -8,6 +8,7 @@ import Audio from "./components/Audio";
 import Footer from "./components/Footer";
 import MusicEnable from "./components/MusicEnable";
 import Canvas from "./Canvas.tsx";
+import Musicbtn from "./Musicbtn";
 
 function App() {
   const [ImageType, setImageType] = useState(null);
@@ -16,6 +17,7 @@ function App() {
   const [imageData, setImageData] = useState(null);
   const [musicEnable, setMusicEnable] = useState(null);
   const [musicType, setMusicType] = useState(null);
+  const [musicData, setMusicData] = useState(null);
   const [musicSelected, setMusicSelected] = useState(null);
 
   useEffect(() => {
@@ -89,11 +91,15 @@ function App() {
             question={"Choose music that you would like to listen"}
             musicType={musicType}
             setMusicSelected={setMusicSelected}
+            setMusicData={setMusicData}
           />
         ) : null}
         {(musicSelected !== null && musicEnable === true) ||
         musicEnable === false ? (
           <div className="canvas">
+            {musicEnable === true ? (
+              <Musicbtn musicData={musicData}></Musicbtn>
+            ) : null}
             <Canvas
               ImageURL={
                 uploadedImage ? URL.createObjectURL(uploadedImage) : imageData
@@ -107,7 +113,8 @@ function App() {
           musicEnable,
           musicType,
           musicSelected,
-          imageData
+          imageData,
+          musicData
         )}
       </div>
       <Footer />

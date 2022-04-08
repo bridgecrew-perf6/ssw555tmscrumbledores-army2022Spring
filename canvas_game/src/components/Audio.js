@@ -23,6 +23,11 @@ const Audio = (props) => {
     props.setMusicSelected(optionSelected);
   };
 
+  let mark = (ID) => {
+    const music = document.getElementById(ID);
+    props.setMusicData(music.src);
+  };
+
   return (
     <React.Fragment>
       <div className="qaOutLine">
@@ -33,10 +38,13 @@ const Audio = (props) => {
               className="musicOption"
               type="radio"
               name="music"
-              onClick={() => setOptionSelected(1)}
+              onClick={() => {
+                setOptionSelected(1);
+                mark("music1");
+              }}
             />
             <audio controls>
-              <source src={audio1} type="audio/mpeg" />
+              <source id="music1" src={audio1} type="audio/mpeg" />
             </audio>
           </div>
           <div className="optionValue">
@@ -44,10 +52,13 @@ const Audio = (props) => {
               className="musicOption"
               type="radio"
               name="music"
-              onClick={() => setOptionSelected(2)}
+              onClick={() => {
+                setOptionSelected(1);
+                mark("music2");
+              }}
             />
             <audio controls>
-              <source src={audio2} type="audio/mpeg" />
+              <source id="music2" src={audio2} type="audio/mpeg" />
             </audio>
           </div>
         </div>

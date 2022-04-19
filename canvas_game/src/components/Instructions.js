@@ -6,6 +6,7 @@ const Instructions = () => {
     <React.Fragment>
       <div className="instructionsOutline">
         <h2>About this game</h2>
+        <p></p>
         <p>
           Hello there, folks! Did you know that art and mental health have a
           positive connection?{" "}

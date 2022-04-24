@@ -34,25 +34,25 @@ const DisplayImage = (props) => {
   }
 
   if (props.ImageType === 1) {
-    Image1 = require("../static_data/Images/beaches/1.jpeg");
-    Image2 = require("../static_data/Images/beaches/2.jpeg");
-    Image3 = require("../static_data/Images/beaches/3.jpeg");
-    Image4 = require("../static_data/Images/beaches/4.jpeg");
+    Image1 = require("../static_data/Images/beaches/1.png");
+    Image2 = require("../static_data/Images/beaches/2.png");
+    Image3 = require("../static_data/Images/beaches/3.png");
+    Image4 = require("../static_data/Images/beaches/4.png");
   } else if (props.ImageType === 2) {
-    Image1 = require("../static_data/Images/forests/1.jpeg");
-    Image2 = require("../static_data/Images/forests/2.jpeg");
-    Image3 = require("../static_data/Images/forests/3.jpeg");
-    Image4 = require("../static_data/Images/forests/4.jpeg");
+    Image1 = require("../static_data/Images/forests/1.png");
+    Image2 = require("../static_data/Images/forests/2.png");
+    Image3 = require("../static_data/Images/forests/3.png");
+    Image4 = require("../static_data/Images/forests/4.png");
   } else if (props.ImageType === 3) {
-    Image1 = require("../static_data/Images/Lakes/1.jpeg");
-    Image2 = require("../static_data/Images/Lakes/2.jpeg");
-    Image3 = require("../static_data/Images/Lakes/3.jpeg");
-    Image4 = require("../static_data/Images/Lakes/4.jpeg");
+    Image1 = require("../static_data/Images/Lakes/1.png");
+    Image2 = require("../static_data/Images/Lakes/2.png");
+    Image3 = require("../static_data/Images/Lakes/3.png");
+    Image4 = require("../static_data/Images/Lakes/4.png");
   } else if (props.ImageType === 4) {
-    Image1 = require("../static_data/Images/mountains/1.jpeg");
-    Image2 = require("../static_data/Images/mountains/2.jpeg");
-    Image3 = require("../static_data/Images/mountains/3.jpeg");
-    Image4 = require("../static_data/Images/mountains/4.jpeg");
+    Image1 = require("../static_data/Images/mountains/1.png");
+    Image2 = require("../static_data/Images/mountains/2.png");
+    Image3 = require("../static_data/Images/mountains/3.png");
+    Image4 = require("../static_data/Images/mountains/4.png");
   }
 
   return (

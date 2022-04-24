@@ -117,7 +117,7 @@ function App() {
           musicData
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

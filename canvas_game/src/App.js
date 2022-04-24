@@ -37,7 +37,7 @@ function App() {
         {ImageType === null ? (
           <Qa
             questionType={"image"}
-            question={"what kind of scenario are you looking to scribble on"}
+            question={"What kind of scenario are you looking to scribble on?"}
             option1={"Beaches"}
             option2={"Forests"}
             option3={"Lakes"}
@@ -117,7 +117,7 @@ function App() {
           musicData
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

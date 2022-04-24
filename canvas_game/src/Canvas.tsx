@@ -6,6 +6,7 @@ import {
   ReactSketchCanvasProps,
   ReactSketchCanvasRef,
 } from "react-sketch-canvas";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 type Handlers = [string, () => void, string][];
 
@@ -55,13 +56,20 @@ function InputField({
 }
 
 function Canvas(props: any) {
+  const [zoomEnable, setZoomEnable] = React.useState(false);
+
+  let myImg = document.createElement("img");
+  myImg.width = 1054;
+  myImg.height = 500;
+  myImg.src = props.ImageURL;
+  console.log(myImg);
   const [canvasProps, setCanvasProps] = React.useState<
     Partial<ReactSketchCanvasProps>
   >({
     className: "react-sketch-canvas",
-    width: "100%",
-    height: "500px",
-    backgroundImage: props.ImageURL,
+    width: "" + myImg.width + "px",
+    height: "" + myImg.height + "px",
+    backgroundImage: String(myImg.src),
     preserveBackgroundImageAspectRatio: "none",
     strokeWidth: 4,
     eraserWidth: 5,
@@ -103,29 +111,14 @@ function Canvas(props: any) {
     if (exportImage) {
       const exportedDataURI = await exportImage(exportImageType);
       setDataURI(exportedDataURI);
-    }
-  };
-
-  const svgExportHandler = async () => {
-    const exportSvg = canvasRef.current?.exportSvg;
-
-    if (exportSvg) {
-      const exportedDataURI = await exportSvg();
-      setSVG(exportedDataURI);
-    }
-  };
-
-  const getSketchingTimeHandler = async () => {
-    const getSketchingTime = canvasRef.current?.getSketchingTime;
-
-    try {
-      if (getSketchingTime) {
-        const currentSketchingTime = await getSketchingTime();
-        setSketchingTime(currentSketchingTime);
+      function download(exportedDataURI: string, filename: string) {
+        const link = document.createElement("a");
+        link.href = exportedDataURI;
+        link.download = filename;
+        link.click();
       }
-    } catch {
-      setSketchingTime(0);
-      console.error("With timestamp is disabled");
+
+      download(exportedDataURI, "image");
     }
   };
 
@@ -162,18 +155,11 @@ function Canvas(props: any) {
   };
 
   const clearHandler = () => {
+    canvasProps.backgroundImage = props.ImageURL;
     const clearCanvas = canvasRef.current?.clearCanvas;
 
     if (clearCanvas) {
       clearCanvas();
-    }
-  };
-
-  const resetCanvasHandler = () => {
-    const resetCanvas = canvasRef.current?.resetCanvas;
-
-    if (resetCanvas) {
-      resetCanvas();
     }
   };
 
@@ -191,17 +177,26 @@ function Canvas(props: any) {
       {label}
     </button>
   );
+  const zoomCanvasHandler = async () => {
+    const exportImage = canvasRef.current?.exportImage;
+
+    if (exportImage) {
+      const exportedDataURI = await exportImage(exportImageType);
+      canvasProps.backgroundImage = exportedDataURI;
+      console.log(canvasProps.backgroundImage);
+    }
+
+    setZoomEnable(!zoomEnable);
+  };
 
   const buttonsWithHandlers: Handlers = [
     ["Undo", undoHandler, "primary"],
     ["Redo", redoHandler, "primary"],
     ["Clear All", clearHandler, "primary"],
-    ["Reset All", resetCanvasHandler, "primary"],
+    ["Zoom", zoomCanvasHandler, "primary"],
     ["Pen", penHandler, "secondary"],
     ["Eraser", eraserHandler, "secondary"],
-    // ["Export Image", imageExportHandler, "success"],
-    // ["Export SVG", svgExportHandler, "success"],
-    // ["Get Sketching time", getSketchingTimeHandler, "success"],
+    ["Export Image", imageExportHandler, "success"],
   ];
 
   const onChange = (updatedPaths: CanvasPath[]): void => {
@@ -213,25 +208,25 @@ function Canvas(props: any) {
       <div className="row">
         <aside className="col-3 border-right">
           <header className="my-3">
-            <h3>Properties</h3>
+            <h3 id="Propertiesid1">Properties</h3>
           </header>
           <form className="formCol">
-            {inputProps.map(
-              ([fieldName, type]) => (
-                //   fieldName !== "className" ? (
-                <InputField
-                  key={fieldName}
-                  fieldName={fieldName}
-                  type={type}
-                  canvasProps={canvasProps}
-                  setCanvasProps={setCanvasProps}
-                />
-              )
-              //   ) : null
-            )}
+            {inputProps.map(([fieldName, type]) => (
+              <InputField
+                key={fieldName}
+                fieldName={fieldName}
+                type={type}
+                canvasProps={canvasProps}
+                setCanvasProps={setCanvasProps}
+              />
+            ))}
             <div className="p-2 col-10 d-flex ">
               <div>
-                <label htmlFor="strokeColorInput" className="form-label">
+                <label
+                  id="strokeColorInputid"
+                  htmlFor="strokeColorInput"
+                  className="form-label"
+                >
                   strokeColor
                 </label>
                 <input
@@ -251,123 +246,12 @@ function Canvas(props: any) {
                   }}
                 ></input>
               </div>
-              <div hidden className="mx-4">
-                <label htmlFor="canvasColorInput" className="form-label">
-                  canvasColor
-                </label>
-                <input
-                  name="canvasColor"
-                  type="color"
-                  className="form-control form-control-color"
-                  id="canvasColorInput"
-                  value={canvasProps.canvasColor}
-                  title="Choose stroke color"
-                  onChange={(e) => {
-                    setCanvasProps(
-                      (prevCanvasProps: Partial<ReactSketchCanvasProps>) => ({
-                        ...prevCanvasProps,
-                        backgroundImage: "",
-                        canvasColor: e.target.value,
-                      })
-                    );
-                  }}
-                ></input>
-              </div>
-            </div>
-            <div className="p-2 col-10" hidden>
-              <div className="form-check form-switch">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  id="switchExportWithBackgroundImage"
-                  checked={canvasProps.exportWithBackgroundImage}
-                  onChange={(e) => {
-                    setCanvasProps(
-                      (prevCanvasProps: Partial<ReactSketchCanvasProps>) => ({
-                        ...prevCanvasProps,
-                        exportWithBackgroundImage: e.target.checked,
-                      })
-                    );
-                  }}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="switchExportWithBackgroundImage"
-                >
-                  exportWithBackgroundImage
-                </label>
-              </div>
-            </div>
-            <div className="p-2 col-10" hidden>
-              <div className="form-check form-switch">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  id="switchWithTimestamp"
-                  checked={canvasProps.withTimestamp}
-                  onChange={(e) => {
-                    setCanvasProps(
-                      (prevCanvasProps: Partial<ReactSketchCanvasProps>) => ({
-                        ...prevCanvasProps,
-                        withTimestamp: e.target.checked,
-                      })
-                    );
-                  }}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="switchWithTimestamp"
-                >
-                  withTimestamp
-                </label>
-              </div>
-            </div>
-            <div className="p-2" hidden>
-              <label className="form-check-label" htmlFor="exportImageType">
-                exportImageType
-              </label>
-              <div id="exportImageType" className="pt-2">
-                <div className="form-check form-check-inline">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="exportImageType"
-                    id="exportImageTypePng"
-                    value="png"
-                    checked={exportImageType === "png"}
-                    onChange={() => {
-                      setexportImageType("png");
-                    }}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="exportImageTypePng"
-                  >
-                    png
-                  </label>
-                </div>
-                <div className="form-check form-check-inline">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="exportImageType"
-                    id="exportImageTypeJPEG"
-                    value="touch"
-                    checked={exportImageType === "jpeg"}
-                    onChange={() => {
-                      setexportImageType("jpeg");
-                    }}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="exportImageTypeJPEG"
-                  >
-                    jpeg
-                  </label>
-                </div>
-              </div>
+              <button
+                className="HomeBtn"
+                onClick={() => (window.location.href = "/")}
+              >
+                Home
+              </button>
             </div>
             <div className="p-2" hidden>
               <label
@@ -527,14 +411,31 @@ function Canvas(props: any) {
           </header>
           <section className="row no-gutters canvas-area m-0 p-0">
             <div className="col-9 canvas p-0">
-              <ReactSketchCanvas
-                ref={canvasRef}
-                onChange={onChange}
-                onStroke={(stroke, isEraser) =>
-                  setLastStroke({ stroke, isEraser })
-                }
-                {...canvasProps}
-              />
+              {zoomEnable ? (
+                <TransformWrapper>
+                  <TransformComponent>
+                    <ReactSketchCanvas
+                      ref={canvasRef}
+                      onChange={onChange}
+                      onStroke={(stroke, isEraser) =>
+                        setLastStroke({ stroke, isEraser })
+                      }
+                      {...canvasProps}
+                      style={{ maxHeight: "500px", maxWidth: "100%" }}
+                    />
+                  </TransformComponent>
+                </TransformWrapper>
+              ) : (
+                <ReactSketchCanvas
+                  ref={canvasRef}
+                  onChange={onChange}
+                  onStroke={(stroke, isEraser) =>
+                    setLastStroke({ stroke, isEraser })
+                  }
+                  {...canvasProps}
+                  style={{ maxHeight: "500px", maxWidth: "100%" }}
+                />
+              )}
             </div>
             <div className="canvasRow panel">
               {buttonsWithHandlers.map(([label, handler, themeColor]) =>
@@ -620,41 +521,6 @@ function Canvas(props: any) {
                 }
                 alt="exported"
               />
-            </div>
-          </section>
-
-          <section
-            hidden
-            className="row image-export p-3 justify-content-center align-items-start"
-          >
-            <div className="col-5 row form-group">
-              <label className="col-12" htmlFor="svgCode">
-                Exported SVG code
-              </label>
-              <textarea
-                id="svgCode"
-                className="dataURICode col-12"
-                readOnly
-                rows={10}
-                value={svg || "Click on export svg"}
-              />
-            </div>
-            <div className="col-5 offset-2">
-              <p>Exported SVG</p>
-              {svg ? (
-                <span
-                  id="exported-svg"
-                  className="exported-image"
-                  dangerouslySetInnerHTML={{ __html: svg }}
-                />
-              ) : (
-                <img
-                  src="https://via.placeholder.com/500x250/000000/FFFFFF/?text=Click on export SVG"
-                  alt="Svg Export"
-                  id="exported-svg"
-                  className="exported-image"
-                />
-              )}
             </div>
           </section>
         </section>

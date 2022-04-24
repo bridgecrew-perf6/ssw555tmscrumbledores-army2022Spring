@@ -5,6 +5,7 @@ import Instructions from "./components/Instructions";
 import Displayimage from "./components/DisplayImage";
 import MusicEnable from"./components/MusicEnable";
 import Audio from "./components/Audio";
+import Canvas from "./Canvas";
 Enzyme.configure({ adapter: new Adapter() });
 
 
@@ -14,7 +15,6 @@ test("Test case to check Heading of question in selecting image type from Qa com
    
     expect(wrapper.find('#question').text()).toBe("What kind of scenario are you looking to scribble on?");
 })
-
 test("Test case to check the HTML tags for Instruction.js file",() => {
         const wrapper = shallow(<Instructions/>);
     
@@ -38,6 +38,61 @@ test("Test case to check Heading of question in selecting music audio from Audio
    
     expect(wrapper.find('#Question4').text()).toBe("Choose music that you would like to listen");
 })
+
+test("Test case to check the HTML tags for Canvas.tsx file",() => {
+    const wrapper = shallow(<Canvas/>);
+
+    expect(wrapper.find('#Propertiesid1').text()).toContain("Properties");
+})
+
+
+test("Test case to check the strokeColorInput in  Canvas.tsx file",() => {
+    const wrapper = shallow(<Canvas/>);
+
+    expect(wrapper.find('#strokeColorInputid').text()).toContain("strokeColor");
+})
+
+test("Test case to check the strokeColorInput in  Canvas.tsx file",() => {
+    const wrapper = shallow(<Canvas/>);
+
+    expect(wrapper.find('#strokeColorInputid').text()).toContain("strokeColor");
+})
+
+// test("Test case to check the strokeColorInput is valid in  Canvas.tsx file",() => {
+//     const wrapper = shallow(<Canvas/>);
+
+//     expect(wrapper.find('#strokeColorInput').text()).toBe("Choose stroke color");
+// })
+
+test("Test case to check the canvasColorInput in  Canvas.tsx file",() => {
+    const wrapper = shallow(<Canvas/>);
+
+    expect(wrapper.find('#canvasColorInputid').text()).toContain("canvasColor");
+})
+
+test("Test case to check the switch Export With BackgroundImag Id in  Canvas.tsx file",() => {
+    const wrapper = shallow(<Canvas/>);
+
+    expect(wrapper.find('#switchExportWithBackgroundImagid').text()).toContain("exportWithBackgroundImage");
+})
+
+test("Test case to check export image type in  Canvas.tsx file",() => {
+    const wrapper = shallow(<Canvas/>);
+
+    expect(wrapper.find('#exportImageTypeid').text()).toContain("exportImageType");
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

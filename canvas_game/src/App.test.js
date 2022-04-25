@@ -6,6 +6,8 @@ import Displayimage from "./components/DisplayImage";
 import MusicEnable from "./components/MusicEnable";
 import Audio from "./components/Audio";
 import Canvas from "./Canvas";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 Enzyme.configure({ adapter: new Adapter() });
 
 test("Test case to check Heading of question in selecting image type from Qa component", () => {
@@ -17,6 +19,7 @@ test("Test case to check Heading of question in selecting image type from Qa com
     "What kind of scenario are you looking to scribble on?"
   );
 });
+
 test("Test case to check the HTML tags for Instruction.js file", () => {
   const wrapper = shallow(<Instructions />);
 
@@ -59,8 +62,21 @@ test("Test case to check the HTML tags for Canvas.tsx file Propertiesid1", () =>
   expect(wrapper.find("#Propertiesid1").text()).toContain("Properties");
 });
 
-test("Test case to check the strokeColorInput in  Canvas.tsx file strokeColorInputid", () => {
+test("Test case for stroke color ", () => {
   const wrapper = shallow(<Canvas />);
 
   expect(wrapper.find("#strokeColorInputid").text()).toContain("strokeColor");
 });
+
+test("Test case for Footer component", () => {
+  const wrapper = shallow(<Footer />);
+
+  expect(wrapper.find("p").text()).toContain("© Copyright");
+});
+
+// test("checking onclick function of button in Audio.js function", () => {
+
+//   const wrapper = shallow(< Audio />)
+//   wrapper.find('button').simulate('click');
+//   expect (wrapper.find('#initial_value_Audio').text()).toBe('1');
+// })

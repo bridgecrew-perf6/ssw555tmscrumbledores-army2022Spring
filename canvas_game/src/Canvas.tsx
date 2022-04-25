@@ -62,7 +62,6 @@ function Canvas(props: any) {
   myImg.width = 1054;
   myImg.height = 500;
   myImg.src = props.ImageURL;
-  console.log(myImg);
   const [canvasProps, setCanvasProps] = React.useState<
     Partial<ReactSketchCanvasProps>
   >({
@@ -106,6 +105,9 @@ function Canvas(props: any) {
     React.useState<ExportImageType>("png");
 
   const imageExportHandler = async () => {
+    const artByElement = document.getElementById("artBy") as HTMLInputElement;
+    const artBy = artByElement.value;
+
     const exportImage = canvasRef.current?.exportImage;
 
     if (exportImage) {
@@ -118,7 +120,7 @@ function Canvas(props: any) {
         link.click();
       }
 
-      download(exportedDataURI, "image");
+      download(exportedDataURI, artBy);
     }
   };
 
@@ -252,6 +254,41 @@ function Canvas(props: any) {
               >
                 Home
               </button>
+            </div>
+            <div className="p-2 col-10 d-flex ">
+              <div>
+                <label id="artByid" htmlFor="artBy" className="form-label">
+                  Art By
+                </label>
+                <input
+                  type="text"
+                  name="artBy"
+                  className="form-control"
+                  id="artBy"
+                  title="Enter the name of the artist"
+                  onChange={(e) => {
+                    setCanvasProps(
+                      (prevCanvasProps: Partial<ReactSketchCanvasProps>) => ({
+                        ...prevCanvasProps,
+                        artBy: e.target.value,
+                      })
+                    );
+                  }}
+                ></input>
+                <button
+                  className="btn btn-primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const artByElement = document.getElementById(
+                      "artBy"
+                    ) as HTMLInputElement;
+                    console.log(artByElement.value);
+                    // get value of input field artBy and set it to canvasProps.artBy
+                  }}
+                >
+                  Save
+                </button>
+              </div>
             </div>
             <div className="p-2" hidden>
               <label

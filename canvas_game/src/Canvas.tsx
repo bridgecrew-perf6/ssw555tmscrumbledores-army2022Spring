@@ -206,7 +206,7 @@ function Canvas(props: any) {
   };
 
   return (
-    <main className="container-fluid">
+    <main className="container-fluid" style={{ backgroundColor: "#c5f1f6" }}>
       <div className="row">
         <aside className="col-3 border-right">
           <header className="my-3">

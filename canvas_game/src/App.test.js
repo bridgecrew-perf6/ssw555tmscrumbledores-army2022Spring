@@ -26,7 +26,6 @@ test("Test case to check the HTML tags for Instruction.js file", () => {
   expect(wrapper.find("h2").text()).toContain("About this game");
 });
 
-
 test("Test case to check Heading of question in selecting image type from DisplayImage component", () => {
   const wrapper = shallow(
     <Displayimage question="Choose an image to doodle on" />
@@ -63,18 +62,17 @@ test("Test case to check the HTML tags for Canvas.tsx file Propertiesid1", () =>
   expect(wrapper.find("#Propertiesid1").text()).toContain("Properties");
 });
 
-test("Test case for Footer component ", () => {
+test("Test case for stroke color ", () => {
   const wrapper = shallow(<Canvas />);
 
   expect(wrapper.find("#strokeColorInputid").text()).toContain("strokeColor");
 });
 
-test("Test case for Footer component ", () => {
+test("Test case for Footer component", () => {
   const wrapper = shallow(<Footer />);
 
   expect(wrapper.find("p").text()).toContain("© Copyright");
 });
- 
 
 // test("checking onclick function of button in Audio.js function", () => {
 
